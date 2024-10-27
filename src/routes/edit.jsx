@@ -7,11 +7,11 @@ export async function loader({ params }) {
 }
 
 export async function action({ request, params }) {
-  console.log("edit action")
+  console.log("edit action");
   const formData = await request.formData();
-  const updates = Object.fromEntries(formData)
-  await updateContact(params.contactId, updates)
-  return redirect(`/contacts/${params.contactId}`)
+  const updates = Object.fromEntries(formData);
+  await updateContact(params.contactId, updates);
+  return redirect(`/contacts/${params.contactId}`);
 }
 
 export default function EditContact() {
@@ -58,15 +58,18 @@ export default function EditContact() {
       </label>
       <label>
         <span>Notes</span>
-        <textarea
-          name="notes"
-          defaultValue={contact?.notes}
-          rows={6}
-        />
+        <textarea name="notes" defaultValue={contact?.notes} rows={6} />
       </label>
       <p>
         <button type="submit">Save</button>
-        <button type="button" onClick={() => { navigate(-1)} }>Cancel</button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Cancel
+        </button>
       </p>
     </Form>
   );
