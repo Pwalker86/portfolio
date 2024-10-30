@@ -1,20 +1,45 @@
+import { FC } from "react";
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
 import { getContact, updateContact } from "../contacts";
 
-export async function loader({ params }) {
+type ContactParams = {
+  contactId: string;
+};
+
+type Contact = {
+  id: string;
+  first: string;
+  last: string;
+  avatar: string;
+  twitter: string;
+  notes: string;
+  favorite: boolean;
+};
+
+type ContactLoaderData = {
+  contact: Contact;
+};
+
+export async function loader({ params }: { params: ContactParams }) {
   const contact = await getContact(params.contactId);
   return { contact };
 }
 
-export async function action({ request, params }) {
+export async function action({
+  request,
+  params,
+}: {
+  request: Request;
+  params: ContactParams;
+}) {
   const formData = await request.formData();
   return updateContact(params.contactId, {
     favorite: formData.get("favorite") === "true",
   });
 }
 
-export default function Contact() {
-  const { contact } = useLoaderData();
+export const Contact: FC = () => {
+  const { contact } = useLoaderData() as ContactLoaderData;
 
   return (
     <div id="contact">
@@ -69,9 +94,11 @@ export default function Contact() {
       </div>
     </div>
   );
-}
+};
 
-function Favorite({ contact }) {
+export default Contact;
+
+function Favorite({ contact }: { contact: Contact }) {
   const fetcher = useFetcher();
   const favorite = fetcher.formData
     ? fetcher.formData.get("favorite") === "true"
