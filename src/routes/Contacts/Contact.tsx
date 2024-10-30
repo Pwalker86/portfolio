@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
-import { getContact, updateContact } from "../contacts";
+import { getContact, updateContact } from "./utils/contacts";
 
 type ContactParams = {
   contactId: string;

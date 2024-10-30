@@ -8,7 +8,7 @@ import {
   useNavigation,
   useSubmit,
 } from "react-router-dom";
-import { getContacts, createContact } from "../contacts";
+import { getContacts, createContact } from "./utils/contacts";
 
 export async function action() {
   const contact = await createContact();
@@ -22,7 +22,7 @@ export async function loader({ request }) {
   return { contacts, q };
 }
 
-export default function Root() {
+export default function ContactRoot() {
   const { contacts, q } = useLoaderData();
   const navigation = useNavigation();
   const submit = useSubmit();
@@ -67,7 +67,7 @@ export default function Root() {
               {contacts.map((contact) => (
                 <li key={contact.id}>
                   <NavLink
-                    to={`contacts/${contact.id}`}
+                    to={`${contact.id}`}
                     className={({ isActive, isPending }) =>
                       isActive ? "active" : isPending ? "pending" : ""
                     }
