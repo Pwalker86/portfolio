@@ -19,7 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".", // This sets the base directory for resolving modules
+    "baseUrl": ".",
     "paths": {
       "@Src/*": [
         "src/*"

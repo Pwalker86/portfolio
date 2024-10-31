@@ -1,6 +1,7 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
 import { getContact, updateContact } from "./utils/contacts";
+import Button from "../../components/Button";
 
 type ContactParams = {
   contactId: string;
@@ -77,7 +78,7 @@ export const Contact: FC = () => {
 
         <div>
           <Form action="edit">
-            <button type="submit">Edit</button>
+            <Button type="submit">Edit</Button>
           </Form>
           <Form
             method="post"
@@ -88,7 +89,7 @@ export const Contact: FC = () => {
               }
             }}
           >
-            <button type="submit">Delete</button>
+            <Button type="submit">Delete</Button>
           </Form>
         </div>
       </div>
