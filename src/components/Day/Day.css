@@ -1,0 +1,15 @@
+.Day__container {
+  border: 1px solid black;
+  aspect-ratio: 1;
+  height: 60px;
+  margin: 0;
+  position: relative;
+}
+
+.Day__number {
+  height: fit-content;
+  border-bottom: 1px solid black;
+  width: 100%;
+  text-align: center;
+  font-size: x-small;
+}

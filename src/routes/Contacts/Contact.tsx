@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
 import { getContact, updateContact } from "./utils/contacts";
-import Button from "../../components/Button";
+import Button from "../../components/Button/Button";
+import Day from "../../components/Day/Day";
 
 type ContactParams = {
   contactId: string;
@@ -78,7 +79,9 @@ export const Contact: FC = () => {
 
         <div>
           <Form action="edit">
-            <Button type="submit">Edit</Button>
+            <Button type="submit" corners="rounded-square" size="small">
+              Edit
+            </Button>
           </Form>
           <Form
             method="post"
@@ -89,9 +92,12 @@ export const Contact: FC = () => {
               }
             }}
           >
-            <Button type="submit">Delete</Button>
+            <Button type="submit" size="small">
+              Delete
+            </Button>
           </Form>
         </div>
+        <Day dayNumber={1}></Day>
       </div>
     </div>
   );

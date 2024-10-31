@@ -3,30 +3,25 @@ import "./Button.css";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  onClickFunc?: () => void;
-  role?: string;
-  disabled?: boolean;
-  corners?: "rounded" | "square";
-  size?: "small" | "medium" | "large";
-  type?: "button" | "submit" | "reset";
+  onClickFunc?: Function;
+  corners?: "rounded" | "square" | "rounded-square";
+  size?: "tiny" | "small" | "medium" | "large";
+  color?: "primary" | "secondary" | "transparent";
 }
 
 const Button: FC<ButtonProps> = ({
   children,
   onClickFunc,
-  role = "button",
-  disabled = false,
   corners = "rounded",
   size = "medium",
-  type = "button",
+  color = "primary",
+  ...props
 }) => {
   return (
     <button
-      className={`Button ${corners} ${size} primary`}
-      onClick={onClickFunc}
-      role={role}
-      disabled={disabled}
-      type={type}
+      className={`Button ${corners} ${size} ${color}`}
+      onClick={onClickFunc as any}
+      {...props}
     >
       {children}
     </button>
