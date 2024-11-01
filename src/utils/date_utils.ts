@@ -23,8 +23,12 @@ export function getDaysInMonth(month: number, year: number) {
   return days;
 }
 
+type MonthDays = {
+  [key: string]: number[];
+};
+
 export function getDaysInYear(year: number) {
-  let yearDays = {};
+  let yearDays: MonthDays = {};
   months.forEach((month, index) => {
     yearDays[month] = getDaysInMonth(index, year);
   });

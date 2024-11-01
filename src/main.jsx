@@ -15,13 +15,15 @@ import EditContact, {
   action as editAction,
 } from "./routes/Contacts/EditContact";
 import { action as destroyAction } from "./routes/Contacts/DestroyContact";
-import { Index } from "./routes";
+import { Home } from "./routes/Home/Home";
 import "./index.css";
+import ButtonDemo from "./routes/Button/ButtonDemo";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Index />,
+    element: <Home />,
+    children: [{ path: "button", element: <ButtonDemo /> }],
   },
   {
     path: "/contacts",
@@ -30,7 +32,6 @@ const router = createBrowserRouter([
     loader: rootLoader,
     action: rootAction,
     children: [
-      { index: true, element: <Index /> },
       {
         path: ":contactId",
         element: <Contact />,

@@ -9,6 +9,7 @@ import {
   useSubmit,
 } from "react-router-dom";
 import { getContacts, createContact } from "./utils/contacts";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 export async function action() {
   const contact = await createContact();
@@ -37,8 +38,7 @@ export default function ContactRoot() {
 
   return (
     <>
-      <div id="sidebar">
-        <h1>React Router Contacts</h1>
+      <Sidebar headerText="React Router Contacts">
         <div>
           <Form id="search-form" role="search">
             <input
@@ -64,6 +64,9 @@ export default function ContactRoot() {
         <nav>
           {contacts.length ? (
             <ul>
+              <li>
+                <NavLink to={"/"}>Home</NavLink>
+              </li>
               {contacts.map((contact) => (
                 <li key={contact.id}>
                   <NavLink
@@ -90,7 +93,7 @@ export default function ContactRoot() {
             </p>
           )}
         </nav>
-      </div>
+      </Sidebar>
       <div
         id="detail"
         className={navigation.state === "loading" ? "loading" : ""}
