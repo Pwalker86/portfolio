@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
 import { getContact, updateContact } from "./utils/contacts";
 import Button from "../../components/Button/Button";
-import Day from "../../components/Day/Day";
+import DayComp from "../../components/Day/Day";
 
 type ContactParams = {
   contactId: string;
@@ -97,7 +97,6 @@ export const Contact: FC = () => {
             </Button>
           </Form>
         </div>
-        <Day dayNumber={1}></Day>
       </div>
     </div>
   );

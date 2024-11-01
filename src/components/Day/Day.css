@@ -1,4 +1,5 @@
 .Day__container {
+  cursor: pointer;
   border: 1px solid black;
   aspect-ratio: 1;
   height: 60px;
@@ -6,10 +7,32 @@
   position: relative;
 }
 
-.Day__number {
+.Day__number.center {
   height: fit-content;
   border-bottom: 1px solid black;
   width: 100%;
   text-align: center;
   font-size: x-small;
+}
+
+.Day__number.right {
+  height: fit-content;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  font-size: x-small;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  width: 20px;
+}
+
+.Day__number.left {
+  height: fit-content;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  font-size: x-small;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  width: 20px;
 }

@@ -1,18 +1,23 @@
 import React, { FC } from "react";
 import "./Day.css";
 
-type DayProps = {
+export type DayProps = {
   children?: React.ReactNode;
-  dayNumber: number;
+  dayNumber: number | null;
+  numberAlign?: "left" | "center" | "right";
 };
 
-const Day: FC<DayProps> = ({ children, dayNumber }) => {
+const DayComp: FC<DayProps> = ({
+  children,
+  dayNumber,
+  numberAlign = "center",
+}) => {
   return (
     <div className="Day__container">
-      <div className="Day__number">{dayNumber}</div>
+      <div className={`Day__number ${numberAlign}`}>{dayNumber}</div>
       {children}
     </div>
   );
 };
 
-export default Day;
+export default DayComp;

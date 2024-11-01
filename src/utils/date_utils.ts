@@ -13,21 +13,31 @@ export const months = [
   "December",
 ];
 
-export function getDaysInMonth(month: number, year: number) {
+export const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+export type DayObject = {
+  weekDay: number;
+  date: number;
+};
+
+export function getDaysInMonth(month: number, year: number): DayObject[] {
   const date = new Date(year, month);
-  let days: number[] = [];
+  let days: DayObject[] = [];
   while (date.getMonth() === month) {
-    days.push(new Date(date).getDate());
+    let day = {} as DayObject;
+    day["weekDay"] = date.getDay();
+    day["date"] = date.getDate();
+    days.push(day);
     date.setDate(date.getDate() + 1);
   }
   return days;
 }
 
 type MonthDays = {
-  [key: string]: number[];
+  [key: string]: Object[];
 };
 
-export function getDaysInYear(year: number) {
+export function getDaysInYear(year: number): MonthDays {
   let yearDays: MonthDays = {};
   months.forEach((month, index) => {
     yearDays[month] = getDaysInMonth(index, year);

@@ -6,10 +6,13 @@ export const NavItems: NavItem = {
   Home: {
     path: "/",
   },
-  Contacts: {
-    path: "/contacts",
-  },
   Button: {
     path: "/button",
+  },
+  DayComp: {
+    path: "/day",
+  },
+  Contacts: {
+    path: "/contacts",
   },
 };

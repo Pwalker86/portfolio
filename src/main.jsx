@@ -18,12 +18,19 @@ import { action as destroyAction } from "./routes/Contacts/DestroyContact";
 import { Home } from "./routes/Home/Home";
 import "./index.css";
 import ButtonDemo from "./routes/Button/ButtonDemo";
+import DayDemo from "./routes/Day/DayDemo";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    children: [{ path: "button", element: <ButtonDemo /> }],
+    children: [
+      { path: "button", element: <ButtonDemo /> },
+      {
+        path: "day",
+        element: <DayDemo />,
+      },
+    ],
   },
   {
     path: "/contacts",
