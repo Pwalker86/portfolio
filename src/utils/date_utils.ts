@@ -1,4 +1,4 @@
-const months = [
+export const months = [
   "January",
   "February",
   "March",
@@ -13,13 +13,20 @@ const months = [
   "December",
 ];
 
-function getDaysInMonth(month: number, year: number) {
+export function getDaysInMonth(month: number, year: number) {
   const date = new Date(year, month);
-  let days = [];
-  while (date.getMonth().toLocaleString() === month) {
-    debugger;
+  let days: number[] = [];
+  while (date.getMonth() === month) {
     days.push(new Date(date).getDate());
     date.setDate(date.getDate() + 1);
   }
   return days;
+}
+
+export function getDaysInYear(year: number) {
+  let yearDays = {};
+  months.forEach((month, index) => {
+    yearDays[month] = getDaysInMonth(index, year);
+  });
+  return yearDays;
 }
