@@ -8,7 +8,8 @@ import {
   useNavigation,
   useSubmit,
 } from "react-router-dom";
-import { getContacts, createContact } from "../contacts";
+import { getContacts, createContact } from "./utils/contacts";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 export async function action() {
   const contact = await createContact();
@@ -22,7 +23,7 @@ export async function loader({ request }) {
   return { contacts, q };
 }
 
-export default function Root() {
+export default function ContactRoot() {
   const { contacts, q } = useLoaderData();
   const navigation = useNavigation();
   const submit = useSubmit();
@@ -37,8 +38,7 @@ export default function Root() {
 
   return (
     <>
-      <div id="sidebar">
-        <h1>React Router Contacts</h1>
+      <Sidebar headerText="React Router Contacts">
         <div>
           <Form id="search-form" role="search">
             <input
@@ -64,10 +64,13 @@ export default function Root() {
         <nav>
           {contacts.length ? (
             <ul>
+              <li>
+                <NavLink to={"/"}>Home</NavLink>
+              </li>
               {contacts.map((contact) => (
                 <li key={contact.id}>
                   <NavLink
-                    to={`contacts/${contact.id}`}
+                    to={`${contact.id}`}
                     className={({ isActive, isPending }) =>
                       isActive ? "active" : isPending ? "pending" : ""
                     }
@@ -90,7 +93,7 @@ export default function Root() {
             </p>
           )}
         </nav>
-      </div>
+      </Sidebar>
       <div
         id="detail"
         className={navigation.state === "loading" ? "loading" : ""}
