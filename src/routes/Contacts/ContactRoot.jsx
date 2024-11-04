@@ -9,7 +9,7 @@ import {
   useSubmit,
 } from "react-router-dom";
 import { getContacts, createContact } from "./utils/contacts";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "@Components/Sidebar";
 
 export async function action() {
   const contact = await createContact();

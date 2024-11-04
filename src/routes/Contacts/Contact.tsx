@@ -1,14 +1,13 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Form, useLoaderData, useFetcher } from "react-router-dom";
 import { getContact, updateContact } from "./utils/contacts";
-import Button from "../../components/Button/Button";
-import DayComp from "../../components/Day/Day";
+import Button from "@Components/Button";
 
 type ContactParams = {
   contactId: string;
 };
 
-type Contact = {
+type ContactType = {
   id: string;
   first: string;
   last: string;
@@ -19,7 +18,7 @@ type Contact = {
 };
 
 type ContactLoaderData = {
-  contact: Contact;
+  contact: ContactType;
 };
 
 export async function loader({ params }: { params: ContactParams }) {
@@ -104,7 +103,7 @@ export const Contact: FC = () => {
 
 export default Contact;
 
-function Favorite({ contact }: { contact: Contact }) {
+function Favorite({ contact }: { contact: ContactType }) {
   const fetcher = useFetcher();
   const favorite = fetcher.formData
     ? fetcher.formData.get("favorite") === "true"

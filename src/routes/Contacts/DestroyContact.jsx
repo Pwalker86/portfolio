@@ -6,3 +6,7 @@ export async function action({ params }) {
   await deleteContact(params.contactId);
   return redirect(CONTACTS_ROOT_ROUTE);
 }
+
+export default function DestroyContact() {
+  return null;
+}

@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Sidebar from "@Components/Sidebar";
 import { NavItems } from "./home_utils";
 
 export function Home() {

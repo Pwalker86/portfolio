@@ -1,12 +1,12 @@
 import { FC, useState } from "react";
-import DayComp from "../../components/Day/Day";
-import { months, getDaysInMonth, DayObject } from "../../utils/date_utils";
+import DayComp from "@Components/Day";
+import { months, simpleGetDays } from "../../utils/date_utils";
 import "./DayDemo.css";
 
-const DayDemo: FC = () => {
+export const DayDemo: FC = () => {
   const [month, setMonth] = useState(0);
-  const daysOfTheMonth: DayObject[] = getDaysInMonth(+month, 2024);
-
+  const daysOfTheMonth = simpleGetDays(2024)[months[month]];
+  debugger;
   return (
     <>
       <select
@@ -23,23 +23,21 @@ const DayDemo: FC = () => {
       <h3>Left Aligned</h3>
       <div className="calendar-grid">
         {daysOfTheMonth.map((day) => (
-          <DayComp key={day.date} dayNumber={day.date} numberAlign="left" />
+          <DayComp key={`left-${day}`} dayNumber={day} numberAlign="left" />
         ))}
       </div>
       <h3>Center Aligned</h3>
       <div className="calendar-grid">
         {daysOfTheMonth.map((day) => (
-          <DayComp key={day.date} dayNumber={day.date} numberAlign="center" />
+          <DayComp key={`center-${day}`} dayNumber={day} numberAlign="center" />
         ))}
       </div>
       <h3>Right Aligned</h3>
       <div className="calendar-grid">
         {daysOfTheMonth.map((day) => (
-          <DayComp key={day.date} dayNumber={day.date} numberAlign="right" />
+          <DayComp key={`right-${day}`} dayNumber={day} numberAlign="right" />
         ))}
       </div>
     </>
   );
 };
-
-export default DayDemo;

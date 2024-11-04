@@ -4,21 +4,21 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContactRoot, {
   loader as rootLoader,
   action as rootAction,
-} from "./routes/Contacts/ContactRoot";
-import ErrorPage from "./error-page";
+} from "@Routes/Contacts/ContactRoot";
 import Contact, {
   loader as contactLoader,
   action as contactAction,
-} from "./routes/Contacts/Contact";
+} from "@Routes/Contacts/Contact";
 import EditContact, {
   loader as editContactLoader,
   action as editAction,
-} from "./routes/Contacts/EditContact";
-import { action as destroyAction } from "./routes/Contacts/DestroyContact";
-import { Home } from "./routes/Home/Home";
+} from "@Routes/Contacts/EditContact";
+import { action as destroyAction } from "@Routes/Contacts/DestroyContact";
+import ButtonDemo from "@Routes/Button";
+import { Home } from "@Routes/Home";
+import { DayDemo } from "@Routes";
+import ErrorPage from "./error-page";
 import "./index.css";
-import ButtonDemo from "./routes/Button/ButtonDemo";
-import DayDemo from "./routes/Day/DayDemo";
 
 const router = createBrowserRouter([
   {
