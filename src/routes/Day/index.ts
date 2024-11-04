@@ -1,1 +1,1 @@
-export { DayDemo } from "./DayDemo";
+export { default as DayDemo } from "./DayDemo";

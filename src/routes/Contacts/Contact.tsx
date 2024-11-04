@@ -9,10 +9,6 @@ import {
 import { getContact, updateContact } from "./utils/contacts";
 import Button from "@Components/Button";
 
-type ContactParams = {
-  contactId: string;
-};
-
 type ContactType = {
   id: string;
   first: string;

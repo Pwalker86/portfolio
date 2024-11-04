@@ -36,3 +36,18 @@
   left: 0;
   width: 20px;
 }
+
+.Day__events {
+  position: absolute;
+  top: 10px;
+}
+
+.Day__event {
+  height: 6px;
+  width: 6px;
+  background-color: cornflowerblue;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 2px;
+  margin-right: 2px;
+}

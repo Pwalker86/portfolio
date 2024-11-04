@@ -17,7 +17,7 @@ import EditContact, {
 import { action as destroyAction } from "@Routes/Contacts/DestroyContact";
 import ButtonDemo from "@Routes/Button";
 import { Home } from "@Routes/Home";
-import { DayDemo } from "@Routes/Day";
+import DayDemo, { loader as DayDemoLoader } from "@Routes/Day/DayDemo";
 import ErrorPage from "./error-page";
 import "./index.css";
 
@@ -30,6 +30,7 @@ const router = createBrowserRouter([
       {
         path: "day",
         element: <DayDemo />,
+        loader: DayDemoLoader,
       },
     ],
   },
@@ -61,7 +62,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-type EventType = {
+// ****************** Seed Event Data ******************
+export type EventType = {
   id: string;
   name: string;
   date: number;
@@ -69,8 +71,8 @@ type EventType = {
 
 let events: EventType[] = [];
 
-const seedEvents: any = (event: EventType): void => {
-  localforage.setItem("events", event);
+const seedEvents = (events: EventType[]): void => {
+  localforage.setItem("events", events);
 };
 
 for (let i = 0; i < 10; i++) {
@@ -84,6 +86,8 @@ for (let i = 0; i < 10; i++) {
   console.log("seeded event");
 }
 seedEvents(events);
+
+// ****************** Render App ******************
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
