@@ -3216,6 +3216,7 @@ __metadata:
     sort-by: "npm:^1.2.0"
     tslib: "npm:^2.8.0"
     typescript: "npm:^5.6.3"
+    uuid: "npm:^11.0.2"
     vite: "npm:^5.4.9"
     vitest: "npm:^2.1.4"
   languageName: unknown
@@ -4079,6 +4080,15 @@ __metadata:
   dependencies:
     punycode: "npm:^2.1.0"
   checksum: 10c0/4ef57b45aa820d7ac6496e9208559986c665e49447cb072744c13b66925a362d96dd5a46c4530a6b8e203e5db5fe849369444440cb22ecfc26c679359e5dfa3c
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^11.0.2":
+  version: 11.0.2
+  resolution: "uuid@npm:11.0.2"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 10c0/bd0670a0d6f77f1932da7544c51c32ceb467f3835382df2265f3275c4981d32c136a08a4369fb027ecfffd0b2ae48f19a28266ef636c7347264d5720e85d5ba0
   languageName: node
   linkType: hard
 

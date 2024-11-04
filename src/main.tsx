@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import localforage from "localforage";
 import ContactRoot, {
   loader as rootLoader,
   action as rootAction,
@@ -59,6 +60,31 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+type EventType = {
+  id: string;
+  name: string;
+  date: number;
+};
+
+let events: EventType[] = [];
+
+const seedEvents: any = (event: EventType): void => {
+  localforage.setItem("events", event);
+};
+
+for (let i = 0; i < 10; i++) {
+  let id = Math.random().toString(36).substring(2, 9);
+  const event = {
+    id: id,
+    name: "test Event",
+    date: Math.floor(Math.random() * (29 - 0) + 0),
+  };
+  events.push(event);
+  console.log("seeded event");
+}
+seedEvents(events);
+
 const rootElement = document.getElementById("root");
 if (rootElement) {
   createRoot(rootElement).render(
