@@ -1,5 +1,11 @@
 import { FC } from "react";
-import { Form, useLoaderData, useFetcher } from "react-router-dom";
+import {
+  Form,
+  useLoaderData,
+  useFetcher,
+  LoaderFunction,
+  ActionFunction,
+} from "react-router-dom";
 import { getContact, updateContact } from "./utils/contacts";
 import Button from "@Components/Button";
 
@@ -21,23 +27,22 @@ type ContactLoaderData = {
   contact: ContactType;
 };
 
-export async function loader({ params }: { params: ContactParams }) {
+export const loader: LoaderFunction = async ({
+  params,
+}): Promise<ContactLoaderData> => {
   const contact = await getContact(params.contactId);
   return { contact };
-}
+};
 
-export async function action({
+export const action: ActionFunction = async ({
   request,
   params,
-}: {
-  request: Request;
-  params: ContactParams;
-}) {
+}): Promise<ContactType> => {
   const formData = await request.formData();
   return updateContact(params.contactId, {
     favorite: formData.get("favorite") === "true",
   });
-}
+};
 
 export const Contact: FC = () => {
   const { contact } = useLoaderData() as ContactLoaderData;
