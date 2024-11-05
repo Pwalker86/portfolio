@@ -17,7 +17,9 @@ import EditContact, {
 import { action as destroyAction } from "@Routes/Contacts/DestroyContact";
 import ButtonDemo from "@Routes/Button";
 import { Home } from "@Routes/Home";
-import DayDemo, { loader as DayDemoLoader } from "@Routes/Day/DayDemo";
+import CalendarDemo, {
+  loader as CalendarDemoLoader,
+} from "@Routes/Calendar/CalendarDemo";
 import ErrorPage from "./error-page";
 import "./index.css";
 
@@ -29,8 +31,8 @@ const router = createBrowserRouter([
       { path: "button", element: <ButtonDemo /> },
       {
         path: "day",
-        element: <DayDemo />,
-        loader: DayDemoLoader,
+        element: <CalendarDemo />,
+        loader: CalendarDemoLoader,
       },
     ],
   },

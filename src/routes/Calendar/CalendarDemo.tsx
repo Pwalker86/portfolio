@@ -4,7 +4,7 @@ import DayComp from "@Components/Day";
 import { EventType } from "@Src/main";
 import { months, simpleGetDays } from "../../utils/date_utils";
 import { getEvents } from "./utils/events";
-import "./DayDemo.css";
+import "./CalendarDemo.css";
 
 type EventLoaderData = {
   events: EventType[];
@@ -15,7 +15,7 @@ export const loader: LoaderFunction = async (): Promise<EventLoaderData> => {
   return { events };
 };
 
-export const DayDemo: FC = () => {
+export const CalendarDemo: FC = () => {
   const { events } = useLoaderData() as EventLoaderData;
   const [month, setMonth] = useState(0);
   const daysOfTheMonth = simpleGetDays(2024)[months[month]];
@@ -67,4 +67,4 @@ export const DayDemo: FC = () => {
   );
 };
 
-export default DayDemo;
+export default CalendarDemo;
