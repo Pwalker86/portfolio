@@ -1,16 +1,16 @@
 import React, { FC, useState } from "react";
 import { EventType } from "@Src/main";
-import "./Day.css";
+import "./SmallDay.css";
 import Modal from "../Modal/Modal";
 
-export type DayProps = {
+export type SmallDayProps = {
   children?: React.ReactNode;
   dayNumber: number | null;
   events?: EventType[];
   numberAlign?: "left" | "center" | "right";
 };
 
-const DayComp: FC<DayProps> = ({
+const SmallDayComp: FC<SmallDayProps> = ({
   children,
   dayNumber,
   events,
@@ -51,4 +51,4 @@ const DayComp: FC<DayProps> = ({
   );
 };
 
-export default DayComp;
+export default SmallDayComp;

@@ -20,6 +20,9 @@ import { Home } from "@Routes/Home";
 import CalendarDemo, {
   loader as CalendarDemoLoader,
 } from "@Routes/Calendar/CalendarDemo";
+import DayDetailDemo, {
+  loader as DayDetailDemoLoader,
+} from "@Routes/DayDetailDemo/DayDetailDemo";
 import ErrorPage from "./error-page";
 import "./index.css";
 
@@ -33,6 +36,11 @@ const router = createBrowserRouter([
         path: "day",
         element: <CalendarDemo />,
         loader: CalendarDemoLoader,
+      },
+      {
+        path: "day/:dayId",
+        element: <DayDetailDemo />,
+        loader: DayDetailDemoLoader,
       },
     ],
   },
@@ -74,20 +82,28 @@ export type EventType = {
 let events: EventType[] = [];
 
 const seedEvents = (events: EventType[]): void => {
+  for (let i = 0; i < 10; i++) {
+    let id = Math.random().toString(36).substring(2, 9);
+    const event = {
+      id: id,
+      name: "test Event",
+      date: Math.floor(Math.random() * (29 - 0) + 0),
+    };
+    events.push(event);
+    console.log("seeded event");
+  }
+
   localforage.setItem("events", events);
 };
 
-for (let i = 0; i < 10; i++) {
-  let id = Math.random().toString(36).substring(2, 9);
-  const event = {
-    id: id,
-    name: "test Event",
-    date: Math.floor(Math.random() * (29 - 0) + 0),
-  };
-  events.push(event);
-  console.log("seeded event");
-}
-seedEvents(events);
+localforage.getItem("events").then((value) => {
+  if (value) {
+    console.log(value);
+    console.log("events already seeded");
+  } else {
+    seedEvents(events);
+  }
+});
 
 // ****************** Render App ******************
 

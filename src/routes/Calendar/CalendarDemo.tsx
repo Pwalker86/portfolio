@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { LoaderFunction, useLoaderData } from "react-router-dom";
-import DayComp from "@Components/Day";
+import SmallDayComp from "@Src/components/SmallDay";
 import { EventType } from "@Src/main";
 import { months, simpleGetDays } from "../../utils/date_utils";
 import { getEvents } from "./utils/events";
@@ -28,7 +28,7 @@ export const CalendarDemo: FC = () => {
     return (
       (dayEvents = events.filter((event) => event.date === day)),
       (
-        <DayComp
+        <SmallDayComp
           key={`${numberAlign}-${day}`}
           dayNumber={day}
           numberAlign={numberAlign}
