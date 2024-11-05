@@ -20,6 +20,24 @@ export const DayDemo: FC = () => {
   const [month, setMonth] = useState(0);
   const daysOfTheMonth = simpleGetDays(2024)[months[month]];
   let dayEvents: EventType[];
+
+  const renderCalendar = (
+    day: number,
+    numberAlign: "left" | "center" | "right",
+  ) => {
+    return (
+      (dayEvents = events.filter((event) => event.date === day)),
+      (
+        <DayComp
+          key={`${numberAlign}-${day}`}
+          dayNumber={day}
+          numberAlign={numberAlign}
+          events={dayEvents}
+        />
+      )
+    );
+  };
+
   return (
     <>
       <select
@@ -35,51 +53,15 @@ export const DayDemo: FC = () => {
       </select>
       <h3>Left Aligned</h3>
       <div className="calendar-grid">
-        {daysOfTheMonth.map(
-          (day) => (
-            (dayEvents = events.filter((event) => event.date === day)),
-            (
-              <DayComp
-                key={`left-${day}`}
-                dayNumber={day}
-                numberAlign="left"
-                events={dayEvents}
-              />
-            )
-          ),
-        )}
+        {daysOfTheMonth.map((day) => renderCalendar(day, "left"))}
       </div>
       <h3>Center Aligned</h3>
       <div className="calendar-grid">
-        {daysOfTheMonth.map(
-          (day) => (
-            (dayEvents = events.filter((event) => event.date === day)),
-            (
-              <DayComp
-                key={`center-${day}`}
-                dayNumber={day}
-                numberAlign="center"
-                events={dayEvents}
-              />
-            )
-          ),
-        )}
+        {daysOfTheMonth.map((day) => renderCalendar(day, "center"))}
       </div>
       <h3>Right Aligned</h3>
       <div className="calendar-grid">
-        {daysOfTheMonth.map(
-          (day) => (
-            (dayEvents = events.filter((event) => event.date === day)),
-            (
-              <DayComp
-                key={`right-${day}`}
-                dayNumber={day}
-                numberAlign="right"
-                events={dayEvents}
-              />
-            )
-          ),
-        )}
+        {daysOfTheMonth.map((day) => renderCalendar(day, "right"))}
       </div>
     </>
   );

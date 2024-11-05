@@ -16,11 +16,14 @@ const DayComp: FC<DayProps> = ({
   events,
   numberAlign = "center",
 }) => {
-  const [modalData, setModalData] = useState({ visible: false, events: null });
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalEvents, setModalEvents] = useState<EventType[]>([]);
+
   const handleClick = () => {
-    console.log("clicked");
-    setModalData({ ...modalData, visible: true, events: events });
+    setIsModalVisible(!isModalVisible);
+    setModalEvents(events || []);
   };
+
   return (
     <div className="Day__container" onClick={() => handleClick()}>
       <div className={`Day__number ${numberAlign}`}>{dayNumber}</div>
@@ -31,7 +34,18 @@ const DayComp: FC<DayProps> = ({
           ))}
         </div>
       )}
-      {modalData.visible && <Modal visible={modalData.visible} />}
+      {isModalVisible && (
+        <Modal visible={isModalVisible}>
+          <div>
+            <h3>Events for {dayNumber}</h3>
+            <ul>
+              {modalEvents.map((event) => (
+                <li key={event.id}>{event.name}</li>
+              ))}
+            </ul>
+          </div>
+        </Modal>
+      )}
       {children}
     </div>
   );
