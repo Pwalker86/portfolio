@@ -1,31 +1,31 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { EventType } from "@Src/main";
 import "./SmallDay.css";
-import Modal from "../Modal/Modal";
 
 export type SmallDayProps = {
   children?: React.ReactNode;
   dayNumber: number | null;
+  longDate?: string;
   events?: EventType[];
+  styleVariants?: string;
+  handleClick?: () => void;
   numberAlign?: "left" | "center" | "right";
 };
 
 const SmallDayComp: FC<SmallDayProps> = ({
   children,
   dayNumber,
+  longDate,
   events,
+  styleVariants,
+  handleClick = () => {},
   numberAlign = "center",
 }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [modalEvents, setModalEvents] = useState<EventType[]>([]);
-
-  const handleClick = () => {
-    setIsModalVisible(!isModalVisible);
-    setModalEvents(events || []);
-  };
-
   return (
-    <div className="Day__container" onClick={() => handleClick()}>
+    <div
+      className={`Day__container ${styleVariants}`}
+      onClick={() => handleClick()}
+    >
       <div className={`Day__number ${numberAlign}`}>{dayNumber}</div>
       {events && events.length > 0 && (
         <div className="Day__events">
@@ -33,18 +33,6 @@ const SmallDayComp: FC<SmallDayProps> = ({
             <div key={event.id} className="Day__event" />
           ))}
         </div>
-      )}
-      {isModalVisible && (
-        <Modal visible={isModalVisible}>
-          <div>
-            <h3>Events for {dayNumber}</h3>
-            <ul>
-              {modalEvents.map((event) => (
-                <li key={event.id}>{event.name}</li>
-              ))}
-            </ul>
-          </div>
-        </Modal>
       )}
       {children}
     </div>

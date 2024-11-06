@@ -1,0 +1,38 @@
+.main {
+  padding: 0.7rem;
+  margin-left: 1rem;
+}
+.header {
+  width: 20rem;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.7rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.header button {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.body {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(7, 0fr);
+  gap: 5px;
+}
+.empty {
+  height: 60px;
+  width: 60px;
+  background-color: #e0e0e0;
+  cursor: default;
+}
+.selected {
+  background-color: lightblue;
+  color: white;
+}
+
+.selected-date {
+  text-align: center;
+}

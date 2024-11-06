@@ -9,9 +9,12 @@ export const NavItems: NavItem = {
   Button: {
     path: "/button",
   },
-  DayComp: {
-    path: "/day",
+  Calendar: {
+    path: "/calendar",
   },
+  // DayComp: {
+  //   path: "/day",
+  // },
   Contacts: {
     path: "/contacts",
   },

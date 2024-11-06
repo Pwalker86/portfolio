@@ -1,0 +1,10 @@
+.ButtonDemo__container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.ButtonDemo__container button {
+  margin-top: 1rem;
+}

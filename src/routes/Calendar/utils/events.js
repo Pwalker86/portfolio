@@ -6,8 +6,8 @@ export async function getEvents() {
   return events;
 }
 
-export async function getEvent(dayId) {
+export async function getDayEvents(dayId) {
   let events = await getEvents();
-  const event = events.find((event) => event.date === +dayId);
-  return event ?? null;
+  const dayEvents = events.filter((event) => event.date === dayId);
+  return dayEvents ?? null;
 }

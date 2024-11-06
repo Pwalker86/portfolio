@@ -1,0 +1,35 @@
+.DayDetailDemo__container {
+  padding: 20px;
+  background-color: lightgray;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.DayDetailDemo__container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.DayDetailDemo__eventList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.DayDetailDemo__eventListItem {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #555;
+  transition: background-color 0.3s;
+}
+
+.DayDetailDemo__eventListItem:hover {
+  background-color: #f1f1f1;
+}

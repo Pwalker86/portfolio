@@ -17,12 +17,15 @@ import EditContact, {
 import { action as destroyAction } from "@Routes/Contacts/DestroyContact";
 import ButtonDemo from "@Routes/Button";
 import { Home } from "@Routes/Home";
-import CalendarDemo, {
-  loader as CalendarDemoLoader,
-} from "@Routes/Calendar/CalendarDemo";
+// import CalendarDemo, {
+//   loader as CalendarDemoLoader,
+// } from "@Routes/Calendar/CalendarDemo";
 import DayDetailDemo, {
   loader as DayDetailDemoLoader,
 } from "@Routes/DayDetailDemo/DayDetailDemo";
+import CalendarV2, {
+  loader as CalendarV2Loader,
+} from "./routes/Calendar/v2/Calendar";
 import ErrorPage from "./error-page";
 import "./index.css";
 
@@ -33,10 +36,15 @@ const router = createBrowserRouter([
     children: [
       { path: "button", element: <ButtonDemo /> },
       {
-        path: "day",
-        element: <CalendarDemo />,
-        loader: CalendarDemoLoader,
+        path: "calendar",
+        element: <CalendarV2 />,
+        loader: CalendarV2Loader,
       },
+      // {
+      //   path: "day",
+      //   element: <CalendarDemo />,
+      //   loader: CalendarDemoLoader,
+      // },
       {
         path: "day/:dayId",
         element: <DayDetailDemo />,
@@ -76,21 +84,28 @@ const router = createBrowserRouter([
 export type EventType = {
   id: string;
   name: string;
-  date: number;
+  date: string;
 };
 
 let events: EventType[] = [];
 
 const seedEvents = (events: EventType[]): void => {
   for (let i = 0; i < 10; i++) {
-    let id = Math.random().toString(36).substring(2, 9);
-    const event = {
-      id: id,
-      name: "test Event",
-      date: Math.floor(Math.random() * (29 - 0) + 0),
-    };
-    events.push(event);
-    console.log("seeded event");
+    for (let m = 0; m < 12; m++) {
+      let id = Math.random().toString(36).substring(2, 9);
+      const randomDay = Math.floor(Math.random() * (29 - 0) + 0);
+      const eventDate: string = new Date(
+        `2024/${m + 1}/${randomDay}`,
+      ).toLocaleString();
+      const dateDelimiter = ",";
+      const event = {
+        id: id,
+        name: "test Event " + m,
+        date: eventDate.slice(0, eventDate.indexOf(dateDelimiter)),
+      };
+      events.push(event);
+      console.log("seeded event");
+    }
   }
 
   localforage.setItem("events", events);

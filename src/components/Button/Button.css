@@ -1,3 +1,6 @@
+button {
+  cursor: pointer;
+}
 /* corner options */
 .square {
   border-radius: 0;
@@ -12,7 +15,12 @@
 
 /* size options */
 .tiny {
-  width: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  padding: 4px;
 }
 .small {
   min-width: fit-content;
@@ -20,6 +28,9 @@
 }
 .medium {
   width: 100px;
+}
+.large {
+  width: 200px;
 }
 
 /* color options */
