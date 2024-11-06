@@ -1,0 +1,16 @@
+.HomeDetail__container {
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+
+.HomeDetail__char {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.4rem;
+  transition: transform 0.1s ease-in-out;
+  /* transform-origin: center; */
+}
+
+.HomeDetail__char:hover {
+  transform: scale(1.2);
+}

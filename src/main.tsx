@@ -16,7 +16,7 @@ import EditContact, {
 } from "@Routes/Contacts/EditContact";
 import { action as destroyAction } from "@Routes/Contacts/DestroyContact";
 import ButtonDemo from "@Routes/Button";
-import { Home } from "@Routes/Home";
+import { Home, HomeDetail } from "@Routes/Home";
 // import CalendarDemo, {
 //   loader as CalendarDemoLoader,
 // } from "@Routes/Calendar/CalendarDemo";
@@ -34,6 +34,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
     children: [
+      { path: "/", element: <HomeDetail /> },
       { path: "button", element: <ButtonDemo /> },
       {
         path: "calendar",
