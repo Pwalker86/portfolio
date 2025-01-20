@@ -17,9 +17,9 @@ import EditContact, {
 import { action as destroyAction } from "@Routes/Contacts/DestroyContact";
 import ButtonDemo from "@Routes/Button";
 import { Home, HomeDetail } from "@Routes/Home";
-// import CalendarDemo, {
-//   loader as CalendarDemoLoader,
-// } from "@Routes/Calendar/CalendarDemo";
+import CalendarDemo, {
+  loader as CalendarDemoLoader,
+} from "@Routes/Calendar/CalendarDemo";
 import DayDetailDemo, {
   loader as DayDetailDemoLoader,
 } from "@Routes/DayDetailDemo/DayDetailDemo";
@@ -41,11 +41,6 @@ const router = createBrowserRouter([
         element: <CalendarV2 />,
         loader: CalendarV2Loader,
       },
-      // {
-      //   path: "day",
-      //   element: <CalendarDemo />,
-      //   loader: CalendarDemoLoader,
-      // },
       {
         path: "day/:dayId",
         element: <DayDetailDemo />,
@@ -96,7 +91,7 @@ const seedEvents = (events: EventType[]): void => {
       let id = Math.random().toString(36).substring(2, 9);
       const randomDay = Math.floor(Math.random() * (29 - 0) + 0);
       const eventDate: string = new Date(
-        `2024/${m + 1}/${randomDay}`,
+        `2025/${m + 1}/${randomDay}`,
       ).toLocaleString();
       const dateDelimiter = ",";
       const event = {
@@ -113,8 +108,9 @@ const seedEvents = (events: EventType[]): void => {
 };
 
 localforage.getItem("events").then((value) => {
-  if (value) {
-    console.log(value);
+  if (Array.isArray(value)) {
+    const events: EventType[] = value;
+    console.log(events);
     console.log("events already seeded");
   } else {
     seedEvents(events);
