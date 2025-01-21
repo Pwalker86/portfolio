@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { EventType } from "@Src/main";
+import { EventType } from "@Types/index";
 import "./SmallDay.css";
 
 export type SmallDayProps = {
@@ -15,7 +15,6 @@ export type SmallDayProps = {
 const SmallDayComp: FC<SmallDayProps> = ({
   children,
   dayNumber,
-  longDate,
   events,
   styleVariants,
   handleClick = () => {},

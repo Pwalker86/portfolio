@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { EventType } from "@Src/main";
+import { EventType } from "@Types/index";
 
 type DayDetailProps = {
   events?: EventType[];

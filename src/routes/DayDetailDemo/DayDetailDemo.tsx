@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useLoaderData, LoaderFunction } from "react-router-dom";
 import { getDayEvents } from "../Calendar/utils/events";
-import { EventType } from "@Src/main";
+import { EventType } from "@Types/index";
 import "./DayDetailDemo.css";
 
 type EventLoaderData = {

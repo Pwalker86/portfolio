@@ -1,5 +1,5 @@
-/* .calendar-grid { */
-/*   display: grid; */
-/*   grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); */
-/*   gap: 15px; /1* Adjust the gap between grid items as needed *1/ */
-/* } */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 15px;
+}

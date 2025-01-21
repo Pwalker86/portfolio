@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import localforage from "localforage";
+import "material-icons/iconfont/material-icons.css";
+import { checkOrSeedEvents } from "@Src/seeds/seed_events";
 import ContactRoot, {
   loader as rootLoader,
   action as rootAction,
@@ -15,11 +16,14 @@ import EditContact, {
   action as editAction,
 } from "@Routes/Contacts/EditContact";
 import { action as destroyAction } from "@Routes/Contacts/DestroyContact";
+import AccordianDemo, {
+  loader as AccordianDemoLoader,
+} from "@Routes/Accordian/AccordianDemo";
 import ButtonDemo from "@Routes/Button";
 import { Home, HomeDetail } from "@Routes/Home";
-import CalendarDemo, {
-  loader as CalendarDemoLoader,
-} from "@Routes/Calendar/CalendarDemo";
+// import CalendarDemo, {
+//   loader as CalendarDemoLoader,
+// } from "@Routes/Calendar/CalendarDemo";
 import DayDetailDemo, {
   loader as DayDetailDemoLoader,
 } from "@Routes/DayDetailDemo/DayDetailDemo";
@@ -29,12 +33,18 @@ import CalendarV2, {
 import ErrorPage from "./error-page";
 import "./index.css";
 
+// ****************** Router ******************
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     children: [
       { path: "/", element: <HomeDetail /> },
+      {
+        path: "accordian",
+        element: <AccordianDemo />,
+        loader: AccordianDemoLoader,
+      },
       { path: "button", element: <ButtonDemo /> },
       {
         path: "calendar",
@@ -76,49 +86,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-// ****************** Seed Event Data ******************
-export type EventType = {
-  id: string;
-  name: string;
-  date: string;
-};
-
-let events: EventType[] = [];
-
-const seedEvents = (events: EventType[]): void => {
-  for (let i = 0; i < 10; i++) {
-    for (let m = 0; m < 12; m++) {
-      let id = Math.random().toString(36).substring(2, 9);
-      const randomDay = Math.floor(Math.random() * (29 - 0) + 0);
-      const eventDate: string = new Date(
-        `2025/${m + 1}/${randomDay}`,
-      ).toLocaleString();
-      const dateDelimiter = ",";
-      const event = {
-        id: id,
-        name: "test Event " + m,
-        date: eventDate.slice(0, eventDate.indexOf(dateDelimiter)),
-      };
-      events.push(event);
-      console.log("seeded event");
-    }
-  }
-
-  localforage.setItem("events", events);
-};
-
-localforage.getItem("events").then((value) => {
-  if (Array.isArray(value)) {
-    const events: EventType[] = value;
-    console.log(events);
-    console.log("events already seeded");
-  } else {
-    seedEvents(events);
-  }
-});
+// ****************** Seed Data ******************
+checkOrSeedEvents();
 
 // ****************** Render App ******************
-
 const rootElement = document.getElementById("root");
 if (rootElement) {
   createRoot(rootElement).render(

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { LoaderFunction, useLoaderData, useNavigate } from "react-router-dom";
 import SmallDayComp from "@Src/components/SmallDay";
 import { getEvents } from "../utils/events";
-import { EventType } from "@Src/main";
+import { EventType } from "@Types/index";
 import "./Calendar.css";
 
 type EventLoaderData = {
@@ -44,10 +44,6 @@ function CalendarV2() {
     });
   };
 
-  const handleDateClick = (date: React.SetStateAction<Date>) => {
-    setsDate(date);
-  };
-
   const goToDay = (day: string) => {
     navigate(`/day/${encodeURIComponent(day)}`);
   };
@@ -76,7 +72,6 @@ function CalendarV2() {
         <SmallDayComp
           key={eventDate}
           dayNumber={d}
-          longDate={date.toDateString()}
           styleVariants={`${isSelected ? "selected" : ""}`}
           handleClick={() => goToDay(eventDate)}
           events={dayEvents}

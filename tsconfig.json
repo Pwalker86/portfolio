@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": false,
@@ -21,18 +17,11 @@
     "jsx": "react-jsx",
     "baseUrl": ".", // This sets the base directory for resolving modules
     "paths": {
-      "@Src/*": [
-        "src/*"
-      ],
-      "@Components/*": [
-        "src/components/*"
-      ],
-      "@Routes/*": [
-        "src/routes/*"
-      ]
+      "@Src/*": ["src/*"],
+      "@Components/*": ["src/components/*"],
+      "@Routes/*": ["src/routes/*"],
+      "@Types/*": ["src/types/*"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

@@ -12,6 +12,9 @@ export const NavItems: NavItem = {
   Calendar: {
     path: "/calendar",
   },
+  Accordian: {
+    path: "/accordian",
+  },
   // DayComp: {
   //   path: "/day",
   // },

@@ -1,7 +1,10 @@
 import { FC, useState } from "react";
-import { LoaderFunction, useLoaderData } from "react-router-dom";
+import {
+  LoaderFunction,
+  // useLoaderData
+} from "react-router-dom";
 import SmallDayComp from "@Src/components/SmallDay";
-import { EventType } from "@Src/main";
+import { EventType } from "@Types/index";
 import { months, simpleGetDays } from "../../utils/date_utils";
 import { getEvents } from "./utils/events";
 import "./CalendarDemo.css";
@@ -16,25 +19,25 @@ export const loader: LoaderFunction = async (): Promise<EventLoaderData> => {
 };
 
 export const CalendarDemo: FC = () => {
-  const { events } = useLoaderData() as EventLoaderData;
+  // TODO: These comments don't work with the v2 version of events that I came up with. This demo can still be used to show the different display options of the date numebers.
+  // const { events } = useLoaderData() as EventLoaderData;
   const [month, setMonth] = useState(0);
   const daysOfTheMonth = simpleGetDays(2024)[months[month]];
-  let dayEvents: EventType[];
+  // let dayEvents: EventType[];
 
   const renderCalendar = (
     day: number,
     numberAlign: "left" | "center" | "right",
   ) => {
     return (
-      (dayEvents = events.filter((event) => event.date === day)),
-      (
-        <SmallDayComp
-          key={`${numberAlign}-${day}`}
-          dayNumber={day}
-          numberAlign={numberAlign}
-          events={dayEvents}
-        />
-      )
+      // TODO: These comments don't work with the v2 version of events that I came up with. This demo can still be used to show the different display options of the date numebers.
+      // (dayEvents = events.filter((event) => event.date === day)),
+      <SmallDayComp
+        key={`${numberAlign}-${day}`}
+        dayNumber={day}
+        numberAlign={numberAlign}
+        // events={dayEvents}
+      />
     );
   };
 
