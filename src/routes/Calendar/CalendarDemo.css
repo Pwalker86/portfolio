@@ -1,5 +1,4 @@
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-  gap: 15px;
+.main {
+  padding: 0.7rem;
+  margin-left: 1rem;
 }

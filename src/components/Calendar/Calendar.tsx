@@ -1,23 +1,16 @@
 import { useState } from "react";
-import { LoaderFunction, useLoaderData, useNavigate } from "react-router-dom";
 import SmallDayComp from "@Src/components/SmallDay";
-import { getEvents } from "../utils/events";
 import { EventType } from "@Types/index";
 import "./Calendar.css";
 
-type EventLoaderData = {
+function Calendar({
+  events,
+  handleDayClick,
+}: {
   events: EventType[];
-};
-
-export const loader: LoaderFunction = async (): Promise<EventLoaderData> => {
-  const events = await getEvents();
-  return { events };
-};
-
-function CalendarV2() {
-  const navigate = useNavigate();
+  handleDayClick: (day: string) => void;
+}) {
   const [sDate, setsDate] = useState(new Date());
-  const { events } = useLoaderData() as EventLoaderData;
 
   const findMonthDays = (y: number, m: number) => {
     // 0 as the 3rd argument gets the total number of days in the given month
@@ -42,10 +35,6 @@ function CalendarV2() {
       const nYear = pDate.getFullYear();
       return new Date(nYear, nMonth);
     });
-  };
-
-  const goToDay = (day: string) => {
-    navigate(`/day/${encodeURIComponent(day)}`);
   };
 
   const showCalendar = () => {
@@ -73,7 +62,7 @@ function CalendarV2() {
           key={eventDate}
           dayNumber={d}
           styleVariants={`${isSelected ? "selected" : ""}`}
-          handleClick={() => goToDay(eventDate)}
+          handleClick={() => handleDayClick(eventDate)}
           events={dayEvents}
         />,
       );
@@ -117,4 +106,4 @@ function CalendarV2() {
   );
 }
 
-export default CalendarV2;
+export default Calendar;

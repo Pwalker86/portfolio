@@ -21,15 +21,12 @@ import AccordianDemo, {
 } from "@Routes/Accordian/AccordianDemo";
 import ButtonDemo from "@Routes/Button";
 import { Home, HomeDetail } from "@Routes/Home";
-// import CalendarDemo, {
-//   loader as CalendarDemoLoader,
-// } from "@Routes/Calendar/CalendarDemo";
 import DayDetailDemo, {
   loader as DayDetailDemoLoader,
 } from "@Routes/DayDetailDemo/DayDetailDemo";
-import CalendarV2, {
-  loader as CalendarV2Loader,
-} from "./routes/Calendar/v2/Calendar";
+import CalendarDemo, {
+  loader as CalendarDemoLoader,
+} from "./routes/Calendar/CalendarDemo";
 import ErrorPage from "./error-page";
 import "./index.css";
 
@@ -48,8 +45,8 @@ const router = createBrowserRouter([
       { path: "button", element: <ButtonDemo /> },
       {
         path: "calendar",
-        element: <CalendarV2 />,
-        loader: CalendarV2Loader,
+        element: <CalendarDemo />,
+        loader: CalendarDemoLoader,
       },
       {
         path: "day/:dayId",
