@@ -4,6 +4,7 @@ import localforage from "localforage";
 import { EventType } from "@Types/index";
 import Accordian from "@Components/Accordian";
 import "./AccordianDemo.css";
+import Button from "@Src/components/Button";
 
 type ContentLoaderData = {
   description: string;
@@ -17,11 +18,11 @@ export async function getEvents(): Promise<EventType[]> {
 
 export const loader: LoaderFunction = async (): Promise<ContentLoaderData> => {
   const events = await getEvents();
-  let desc = "";
-  if (events.length > 0 && events[0].desc) {
-    desc = events[0].desc;
+  let description = "";
+  if (events.length > 0 && events[0].description) {
+    description = events[0].description;
   }
-  return { description: desc };
+  return { description: description };
 };
 
 const AccordianDemo: FC = () => {
@@ -29,7 +30,13 @@ const AccordianDemo: FC = () => {
 
   return (
     <div className="Accordian-demo__container">
-      <Accordian headerText="Event 1" content={description} />
+      <Accordian headerText="Event 1" content={description}>
+        <div>{description}</div>
+        <Button onClick={() => alert("Good job!")}>Click Me!</Button>
+        <Button corners="square" color="secondary">
+          Secondary
+        </Button>
+      </Accordian>
     </div>
   );
 };

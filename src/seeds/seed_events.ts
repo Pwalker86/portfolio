@@ -15,11 +15,11 @@ export const seedEvents = (events: EventType[]): void => {
         `2025/${m + 1}/${randomDay}`,
       ).toLocaleString();
       const dateDelimiter = ",";
-      const event = {
+      const event: EventType = {
         id: id,
         name: "test Event " + m,
         date: eventDate.slice(0, eventDate.indexOf(dateDelimiter)),
-        desc: desc,
+        description: desc,
       };
       events.push(event);
       console.log("seeded event");

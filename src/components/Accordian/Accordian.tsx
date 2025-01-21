@@ -1,12 +1,13 @@
-import { FC, useState } from "react";
+import { FC, useState, ReactNode } from "react";
 import "./Accordian.css";
 
 type AccordianProps = {
   headerText: string;
   content: string;
+  children?: ReactNode;
 };
 
-const Accordian: FC<AccordianProps> = ({ headerText, content }) => {
+const Accordian: FC<AccordianProps> = ({ headerText, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -24,7 +25,7 @@ const Accordian: FC<AccordianProps> = ({ headerText, content }) => {
       <div
         className={`Accordian__content ${isOpen ? "Accordian__content--open" : ""}`}
       >
-        {content}
+        {children}
       </div>
     </>
   );
