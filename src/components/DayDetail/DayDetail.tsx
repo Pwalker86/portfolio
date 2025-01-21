@@ -6,15 +6,21 @@ type DayDetailProps = {
 };
 
 const DayDetail: FC<DayDetailProps> = ({ events = [] }) => {
+  const renderEvent = (dayEvent: EventType, index: number) => {
+    return (
+      <>
+        <hr />
+        <li key={dayEvent.id}>{dayEvent.name}</li>
+        <hr />
+      </>
+    );
+  };
+
   return (
-    <div>
+    <>
       <h3>Events for day</h3>
-      <ul>
-        {events.map((event) => (
-          <li key={event.id}>{event.name}</li>
-        ))}
-      </ul>
-    </div>
+      <ul>{events.map((event, index) => renderEvent(event, index))}</ul>
+    </>
   );
 };
 

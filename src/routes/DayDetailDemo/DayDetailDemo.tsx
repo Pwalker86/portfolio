@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useLoaderData, LoaderFunction } from "react-router-dom";
 import { getDayEvents } from "../Calendar/utils/events";
 import { EventType } from "@Types/index";
+import DayDetail from "@Components/DayDetail";
 import "./DayDetailDemo.css";
 
 type EventLoaderData = {
@@ -18,18 +19,11 @@ export const loader: LoaderFunction = async ({
 };
 
 export const DayDetailDemo: FC = () => {
-  const { events, dayId } = useLoaderData() as EventLoaderData;
+  const { events } = useLoaderData() as EventLoaderData;
 
   return (
     <div className="DayDetailDemo__container">
-      <h1>{dayId}</h1>
-      <ul className="DayDetailDemo__eventList">
-        {events.map((event) => (
-          <li className="DayDetailDemo__eventListItem" key={event.id}>
-            {event.name}
-          </li>
-        ))}
-      </ul>
+      <DayDetail events={events} />
     </div>
   );
 };
