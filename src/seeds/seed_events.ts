@@ -18,6 +18,7 @@ export const seedEvents = (events: EventType[]): void => {
       const event: EventType = {
         id: id,
         name: "test Event " + m,
+        time: "12:00",
         date: eventDate.slice(0, eventDate.indexOf(dateDelimiter)),
         description: desc,
       };
