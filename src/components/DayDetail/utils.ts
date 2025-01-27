@@ -1,4 +1,6 @@
-function generateTimeSlots(startTime: number, endTime: number): Record<string, any[]> {
+export function generateTimeSlots(): Record<string, any[]> {
+  const startTime = 0; // 12:00 AM or 00:00
+  const endTime = 24 * 60; // 12:00 PM or 24:00
   const timeSlots: Record<string, any[]> = {};
   let currentTime = startTime;
 
@@ -12,8 +14,3 @@ function generateTimeSlots(startTime: number, endTime: number): Record<string, a
 
   return timeSlots;
 }
-
-const startTime = 0; // 12:00 AM or 00:00
-const endTime = 24 * 60; // 12:00 PM or 24:00
-
-export const timeSlots = generateTimeSlots(startTime, endTime);

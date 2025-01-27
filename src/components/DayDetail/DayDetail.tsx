@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { EventType } from "@Types/index";
-import { timeSlots } from "./utils";
+import { generateTimeSlots } from "./utils";
+import Accordian from "@Components/Accordian";
+import Button from "@Components/Button";
 import "./DayDetail.css";
 
 type DayDetailProps = {
@@ -8,23 +10,7 @@ type DayDetailProps = {
 };
 
 const DayDetail: FC<DayDetailProps> = ({ events = [] }) => {
-  const renderTimeSlots = (timeSlots: Record<string, any[]> = {}) => {
-    return Object.keys(timeSlots).map((timeSlot) => (
-      <>
-        <h4>{timeSlot}</h4>
-        <ul>{renderEvent(timeSlots[timeSlot])}</ul>
-      </>
-    ));
-  };
-  const renderEvent = (timeSlot: EventType[]) => {
-    debugger;
-    timeSlot.map((event) => (
-      <>
-        <li>{event.name}</li>
-        <hr />
-      </>
-    ));
-  };
+  const timeSlots = generateTimeSlots();
 
   const populateTimeSlots = (event: EventType) => {
     if (event.time) {
@@ -33,6 +19,32 @@ const DayDetail: FC<DayDetailProps> = ({ events = [] }) => {
   };
 
   events.forEach(populateTimeSlots);
+
+  const renderTimeSlots = (timeSlots: Record<string, any[]> = {}) => {
+    return Object.keys(timeSlots).map((timeSlot) => (
+      <>
+        <h4>{timeSlot}</h4>
+        <ul>{renderEvents(timeSlots[timeSlot])}</ul>
+      </>
+    ));
+  };
+
+  const renderEvents = (timeSlot: EventType[]) => {
+    if (timeSlot.length > 0) {
+      console.log("renderEvents: ", timeSlot);
+    }
+    return timeSlot.map((event) => {
+      return (
+        <li>
+          <Accordian headerText={event.name}>
+            {event.description}
+            <Button onClick={() => console.log("Event clicked")}>View</Button>
+          </Accordian>
+        </li>
+      );
+    });
+  };
+
   console.log("populated TimeSlots: ", timeSlots);
 
   return (
