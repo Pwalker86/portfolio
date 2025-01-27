@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { EventType } from "@Types/index";
 import { generateTimeSlots } from "./utils";
 import Accordian from "@Components/Accordian";
@@ -10,15 +10,15 @@ type DayDetailProps = {
 };
 
 const DayDetail: FC<DayDetailProps> = ({ events = [] }) => {
-  const timeSlots = generateTimeSlots();
-
-  const populateTimeSlots = (event: EventType) => {
-    if (event.time) {
-      timeSlots[event.time].push(event);
-    }
-  };
-
-  events.forEach(populateTimeSlots);
+  const timeSlots = useMemo(() => {
+    const slots = generateTimeSlots();
+    events.forEach((event) => {
+      if (event.time) {
+        slots[event.time].push(event);
+      }
+    });
+    return slots;
+  }, [events]);
 
   const renderTimeSlots = (timeSlots: Record<string, any[]> = {}) => {
     return Object.keys(timeSlots).map((timeSlot) => (
