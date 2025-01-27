@@ -24,4 +24,10 @@
 .Accordian__openIndicator {
   float: right;
   margin-right: 12px;
+  transition: transform 0.5s;
+}
+
+.Accordian__openIndicator--rotated {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
 }

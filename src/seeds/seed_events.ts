@@ -18,11 +18,14 @@ export const seedEvents = (events: EventType[]): void => {
       const event: EventType = {
         id: id,
         name: "test Event " + m,
+        time:
+          Math.floor(Math.random() * (24 - 1) + 1)
+            .toString()
+            .padStart(2, "0") + ":00",
         date: eventDate.slice(0, eventDate.indexOf(dateDelimiter)),
         description: desc,
       };
       events.push(event);
-      console.log("seeded event");
     }
   }
 

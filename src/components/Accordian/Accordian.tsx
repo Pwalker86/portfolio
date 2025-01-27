@@ -3,7 +3,7 @@ import "./Accordian.css";
 
 type AccordianProps = {
   headerText: string;
-  content: string;
+  contentString?: string;
   children?: ReactNode;
 };
 
@@ -18,7 +18,11 @@ const Accordian: FC<AccordianProps> = ({ headerText, children }) => {
     <>
       <div className="Accordian__header" onClick={toggleOpen}>
         {headerText}
-        <span className="material-icons Accordian__openIndicator">
+        <span
+          className={`material-icons Accordian__openIndicator ${
+            isOpen ? "Accordian__openIndicator--rotated" : ""
+          }`}
+        >
           arrow_drop_down
         </span>
       </div>
