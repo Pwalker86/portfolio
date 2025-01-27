@@ -30,22 +30,17 @@ const DayDetail: FC<DayDetailProps> = ({ events = [] }) => {
   };
 
   const renderEvents = (timeSlot: EventType[]) => {
-    if (timeSlot.length > 0) {
-      console.log("renderEvents: ", timeSlot);
-    }
     return timeSlot.map((event) => {
       return (
         <li>
-          <Accordian headerText={event.name}>
-            {event.description}
-            <Button onClick={() => console.log("Event clicked")}>View</Button>
-          </Accordian>
+          <Accordian headerText={event.name}>{event.description}</Accordian>
+          <Button size="tiny" corners="square">
+            View More
+          </Button>
         </li>
       );
     });
   };
-
-  console.log("populated TimeSlots: ", timeSlots);
 
   return (
     <>
