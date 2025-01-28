@@ -6,18 +6,18 @@ export const NavItems: NavItem = {
   Home: {
     path: "/",
   },
+  Accordian: {
+    path: "/accordian",
+  },
   Button: {
     path: "/button",
   },
   Calendar: {
     path: "/calendar",
   },
-  Accordian: {
-    path: "/accordian",
+  Modal: {
+    path: "/modal",
   },
-  // DayComp: {
-  //   path: "/day",
-  // },
   Contacts: {
     path: "/contacts",
   },
