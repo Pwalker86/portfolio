@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import Button from "@Components/Button";
 import Modal from "@Components/Modal";
+import Accordian from "@Components/Accordian";
 import { Overlay } from "@Components/Modal";
 import "./ModalDemo.css";
 
@@ -20,6 +21,20 @@ export const ModalDemo: FC = () => {
               X
             </span>
             <h2>Events</h2>
+            <Accordian headerText="Some Content">
+              <Button
+                className="ModalDemo__accordianButton"
+                onClick={() => alert("Good job!")}
+              >
+                Click Me!
+              </Button>
+            </Accordian>
+            <Button
+              className="ModalDemo__closeButton"
+              onClick={() => setShowModal(false)}
+            >
+              Close Modal
+            </Button>
           </div>
         </Modal>
       </div>

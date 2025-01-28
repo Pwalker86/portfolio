@@ -12,3 +12,13 @@
   font-weight: bold;
   text-align: center;
 }
+
+.ModalDemo__closeButton {
+  margin-top: 12px;
+}
+
+.ModalDemo__accordianButton {
+  margin-left: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}

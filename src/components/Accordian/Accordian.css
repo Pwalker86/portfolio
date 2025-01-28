@@ -13,7 +13,6 @@
   background-color: lightgrey;
   max-height: 0;
   overflow: hidden;
-  padding: 4px;
   transition: max-height 0.5s;
 }
 

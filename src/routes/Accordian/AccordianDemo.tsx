@@ -30,7 +30,7 @@ const AccordianDemo: FC = () => {
 
   return (
     <div className="Accordian-demo__container">
-      <Accordian headerText="Event 1" content={description}>
+      <Accordian headerText="Event 1">
         <div>{description}</div>
         <Button onClick={() => alert("Good job!")}>Click Me!</Button>
         <Button corners="square" color="secondary">
