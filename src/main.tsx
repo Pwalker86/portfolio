@@ -26,7 +26,8 @@ import DayDetailDemo, {
 } from "@Routes/DayDetailDemo/DayDetailDemo";
 import CalendarDemo, {
   loader as CalendarDemoLoader,
-} from "./routes/Calendar/CalendarDemo";
+} from "@Routes/Calendar/CalendarDemo";
+import ModalDemo from "@Routes/ModalDemo/ModalDemo";
 import ErrorPage from "./error-page";
 import "./index.css";
 
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
         element: <DayDetailDemo />,
         loader: DayDetailDemoLoader,
       },
+      { path: "modal", element: <ModalDemo /> },
     ],
   },
   {

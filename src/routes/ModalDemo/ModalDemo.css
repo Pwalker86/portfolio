@@ -1,0 +1,14 @@
+.ModalDemo__container {
+  margin-top: 80px;
+  margin-left: 20px;
+}
+
+.ModalDemo__close {
+  margin-right: 0;
+  margin-left: auto;
+  width: 20px;
+  display: block;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
